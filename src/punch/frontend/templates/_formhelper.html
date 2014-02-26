@@ -1,0 +1,21 @@
+{% macro render_field(field,required=false) %}
+    <tr>
+    
+        <th>{{ field.label }}{% if required %}<span style="color: red;">*</span>{% endif %}</th>
+        <th>{{ field(**kwargs)|safe }}</th>
+        
+        <th>{% if field.type == "PasswordField"%} at lest 6 letter{% endif %}</th>
+    </tr>
+    <tr>
+    <th></th>
+    <th>
+         {% if field.errors %}
+		    <div class=errors>
+		    {% for error in field.errors %}
+		       <span style="color: red;">{{ error }}</span>
+		    {% endfor %}
+		    </div>
+  		{% endif %}
+  		</th>
+  	</tr>
+{% endmacro %}
