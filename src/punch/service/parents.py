@@ -14,11 +14,11 @@ class ParentService(Service):
 
     def __init__(self, *args, **kwargs):
         super(ParentService, self).__init__(*args, **kwargs)
-        self.categories = ChildService()
+        self.children = ChildService()
 
     def _preprocess_params(self, kwargs):
         kwargs = super(ParentService, self)._preprocess_params(kwargs)
-        children = kwargs.get('categories', [])
+        children = kwargs.get('children', [])
         if children and all(isinstance(c, int) for c in children):
-            kwargs['categories'] = self.categories.get_all(*children)
+            kwargs['children'] = self.categories.get_all(*children)
         return kwargs

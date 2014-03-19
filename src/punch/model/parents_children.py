@@ -23,11 +23,16 @@ class Parent(db.Model):
     qq = db.Column(db.String(10))
     phone_number = db.Column(db.String(11))
     email = db.Column(db.String(50))
-    password = db.Column(db.String(10))
     gender = db.Column(db.Boolean())
+    address = db.Column(db.String(256))
     child = db.relationship('Child',
-                                 secondary=Parents_Chidren,
-                                 backref=db.backref('parent', lazy='joined'))
+                            secondary=Parents_Chidren,
+                            backref=db.backref('parent', lazy='joined'))
+    
+    district_id = db.Column(db.Integer, db.ForeignKey('district.id'))
+    district = db.relationship('District',
+                           backref=db.backref('parent', lazy='dynamic'))
+    
     
 class Child(db.Model):
     __tablename__='child'

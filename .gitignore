@@ -1,0 +1,9 @@
+*.pyc
+*.pyo
+*.log
+*.bak
+*.orig
+thumbs.db
+__pycache__
+doc/_build/
+.metadata/*
