@@ -4,9 +4,11 @@ Created on Feb 25, 2014
 @author: baobao
 '''
 
-from flask_wtf import Form, TextField, DateField, Required, \
-    Optional,validators,PasswordField,BooleanField,RadioField,SelectField,\
-    FormField,FieldList
+from flask_wtf import Form
+from wtforms import TextField, DateField, \
+                    validators,PasswordField,BooleanField,RadioField,SelectField,\
+                    FormField,FieldList
+from wtforms.validators import Required,optional
 
 class ChildForm(Form):
     c_name = TextField('Name of Child')
