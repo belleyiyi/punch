@@ -3,6 +3,9 @@
 *.log
 *.bak
 *.orig
+.project
+.pydevproject
+.settings/
 thumbs.db
 __pycache__
 doc/_build/

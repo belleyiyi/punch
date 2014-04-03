@@ -8,11 +8,11 @@ from ..forms import RegistrationForm
 
 
 
-registration = Blueprint('register', __name__,template_folder='templates')
+dashboard = Blueprint('dashboard', __name__,template_folder='templates')
 
 
 
-@registration.route('/register', methods=['GET', 'POST'])
+@dashboard.route('/register', methods=['GET', 'POST'])
 def register():
     print 'printing' ,request.form
     form = RegistrationForm(request.form)
@@ -22,7 +22,7 @@ def register():
     return render_template('registration.html', form=form,childform=[[]])
 
 
-@registration.route('/admin', methods=['GET', 'POST'])
+@dashboard.route('/admin', methods=['GET', 'POST'])
 def admin():
     print 'printing' ,request.form
     form = RegistrationForm(request.form)
@@ -31,20 +31,10 @@ def admin():
 #         return redirect(url_for('login'))
     return render_template('frame.html', left='/left',right='/right')
 
-@registration.route('/left', methods=['GET', 'POST'])
+@dashboard.route('/left', methods=['GET', 'POST'])
 def left():
-    print 'printing' ,request.form
-    form = RegistrationForm(request.form)
-    if request.method == 'POST' and form.validate():
-        flash('Thanks for registering')
-#         return redirect(url_for('login'))
     return render_template('left.html')
 
-@registration.route('/right', methods=['GET', 'POST'])
+@dashboard.route('/right', methods=['GET', 'POST'])
 def right():
-    print 'printing' ,request.form
-    form = RegistrationForm(request.form)
-    if request.method == 'POST' and form.validate():
-        flash('Thanks for registering')
-#         return redirect(url_for('login'))
     return render_template('right.html')
