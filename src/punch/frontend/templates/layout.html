@@ -6,5 +6,14 @@
   <div class=metanav>
 
   </div>
-  {% block body %}{% endblock %}
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+ {% endwith %}
+{% block body %}{% endblock %}
 </div>

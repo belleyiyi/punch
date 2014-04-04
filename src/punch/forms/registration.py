@@ -9,6 +9,7 @@ from wtforms import TextField, DateField, \
                     validators,PasswordField,BooleanField,RadioField,SelectField,\
                     FormField,FieldList
 from wtforms.validators import Required,optional
+# from ..service import district_service
 
 class ChildForm(Form):
     c_name = TextField('Name of Child')
@@ -21,15 +22,8 @@ class RegistrationForm(Form):
     email = TextField('Email Address')
     qq = TextField('QQ')
     phone = TextField('Phone Number',[validators.Length(min=11,max=11),validators.Required()])
-    
-    password = PasswordField('New Password', [
-        validators.Required(),
-        validators.EqualTo('confirm', message='Passwords must match'),
-        validators.Length(min=6)
-    ])
-    confirm = PasswordField('Repeat Password',
-                            [validators.Required(),
-                            validators.Length(min=6)])
+#     district = SelectField('district',choices=[(d.id,d.name) for d in district_service.all()])
+
     gender = SelectField('Gender', choices=[('0','female'),('1','male')])
     first_child = FormField(ChildForm,[validators.Required()])
     second_child = FormField(ChildForm)

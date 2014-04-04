@@ -31,7 +31,12 @@ def create_app(package_name, package_path, settings_override=None,
     app.config.from_object('punch.setting')
     app.config.from_object(settings_override)
 
+#     db.init_app(app)
+#     
+#     db.create_all()
     db.init_app(app)
+    with app.app_context():
+        db.create_all()
 
     register_blueprints(app, package_name, package_path)
 

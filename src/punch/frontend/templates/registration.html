@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 {% block body %}
 <h1>Registration</h1>
-<form method=post action="/register">
+<form method=post action="{{ url_for('dashboard.register') }}">
 <table>
     {{ render_field(form.first_name,true) }}
     {{ render_field(form.last_name,true) }}
@@ -23,8 +23,7 @@
     {{ render_field(form.third_child.c_gender)}}
 
 <tr>
-  <th><p><input type=submit value=Register></th>
-   <th><p><input type=submit value=clear action="/register" ></th>
+  <th><p><input type="submit" value="register"></th>
 </tr>
 </table>
 </form>
