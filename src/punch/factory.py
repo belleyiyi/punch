@@ -7,11 +7,18 @@
 """
 
 import os
-from flask import Flask
+from flask import Flask,session
 from flask_security import SQLAlchemyUserDatastore
 from .middleware import HTTPMethodOverrideMiddleware
 from .helpers import register_blueprints
 from .core import db
+
+# def generate_csrf_token():
+#     if '_csrf_token' not in session:
+#         session['_csrf_token'] = some_random_string()
+#     return session['_csrf_token']
+
+
 
 
 def create_app(package_name, package_path, settings_override=None,
@@ -30,6 +37,7 @@ def create_app(package_name, package_path, settings_override=None,
 
     app.config.from_object('punch.setting')
     app.config.from_object(settings_override)
+#     app.jinja_env.globals['csrf_token'] = generate_csrf_token  
 
 #     db.init_app(app)
 #     

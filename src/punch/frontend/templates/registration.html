@@ -3,16 +3,19 @@
 {% block body %}
 <h1>Registration</h1>
 <form method=post action="{{ url_for('dashboard.register') }}">
+{{ form.hidden_tag() }}
+{{ form.id }}
 <table>
-    {{ render_field(form.first_name,true) }}
-    {{ render_field(form.last_name,true) }}
-
+    {{ render_field(form.name,true) }}
     {{ render_field(form.phone,true) }}
+    {{ render_field(form.email,true) }}
+    {{ render_field(form.qq) }}
     {{ render_field(form.gender) }}
-	
+
+
     {{ render_field(form.first_child.c_name,true) }}
     {{ render_field(form.first_child.c_birth_day,true) }}
-    {{ render_field(form.first_child.c_gender)}}
+    {{ render_field(form.first_child.c_gender,true)}}
  
     {{ render_field(form.second_child.c_name) }}
     {{ render_field(form.second_child.c_birth_day) }}
