@@ -17,9 +17,9 @@ class Event(db.Model):
     site = db.relationship('Site',
                            backref=db.backref('event', lazy='dynamic'))
     
-#     volunteer_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-#     volunteer = db.relationship('User',
-#                            backref=db.backref('event', lazy='dynamic'))
+    volunteer_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    volunteer = db.relationship('User',
+                           backref=db.backref('event', lazy='dynamic'))
 #     
 
     

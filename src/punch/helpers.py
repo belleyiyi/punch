@@ -19,7 +19,9 @@ from flask.json import JSONEncoder as BaseJSONEncoder
 from admin import Admin
 
 MODULE_PARAM = {'UserModule':['/users','user'],
-                'DistrictModule':['/districts','district','disticts']
+                'DistrictModule':['/districts','district','distict'],
+                'SiteModule':['/sites','site','site'],
+                'EventModule':['/events','event','event'],
                 }
 
 def register_form(app, package_name, package_path):

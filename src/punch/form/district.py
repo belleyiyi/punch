@@ -8,7 +8,6 @@ Created on Apr 21, 2014
 
 @author: baobao
 '''
-import wtforms
 from ..ext.sqlalchemy import ModelAdminModule, model_form
 from ..core import db
 from ..model import District

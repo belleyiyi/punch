@@ -49,8 +49,3 @@ class UserModule(ModelAdminModule):
            .options(contains_eager('district', alias=district_alias))\
 
     form_class = UserForm
-    
-    def create_object(self):
-        user = self.model()
-        user.district = District()
-        return user
