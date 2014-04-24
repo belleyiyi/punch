@@ -16,9 +16,13 @@ import importlib
 
 from flask import Blueprint
 from flask.json import JSONEncoder as BaseJSONEncoder
+from admin import Admin
 
+MODULE_PARAM = {'UserModule':['/users','user'],
+                'DistrictModule':['/districts','district','disticts']
+                }
 
-def register_blueprints(app, package_name, package_path):
+def register_form(app, package_name, package_path):
     """Register all Blueprint instances on the specified Flask application found
     in all modules for the specified package.
  
@@ -27,13 +31,23 @@ def register_blueprints(app, package_name, package_path):
     :param package_path: the package path
     """
     rv = []
+    admin = Admin(app, title="my test")
     for _, name, _ in pkgutil.iter_modules(package_path):
         m = importlib.import_module('%s.%s' % (package_name, name))
-        for item in dir(m):
-            item = getattr(m, item)
-            if isinstance(item, Blueprint):
-                app.register_blueprint(item)
-            rv.append(item)
+#         print '%s.%s' % (package_name, name)
+        if name == 'form':
+#             admin.register_module(UserModule, '/users', 'users',
+#     'users')
+            for item in dir(m):
+                item = getattr(m, item)
+                
+                try:
+                    parameters = MODULE_PARAM[item.name]
+                    admin.register_module(item,parameters[0],parameters[1],parameters[1])
+                except Exception as e:
+#                     print e
+                    continue
+  
     return rv
 
 

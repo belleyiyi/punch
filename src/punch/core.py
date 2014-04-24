@@ -5,6 +5,6 @@ Created on Feb 20, 2014
 '''
 from flask_sqlalchemy import SQLAlchemy
 
-#: Flask-SQLAlchemy extension instance
+# : Flask-SQLAlchemy extension instance
 db = SQLAlchemy()
 

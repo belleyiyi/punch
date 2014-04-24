@@ -7,11 +7,14 @@
 """
 
 import os
-from flask import Flask,session
-from flask_security import SQLAlchemyUserDatastore
-from .middleware import HTTPMethodOverrideMiddleware
-from .helpers import register_blueprints
+from flask import Flask, session
+# from .middleware import HTTPMethodOverrideMiddleware
+# from .helpers import register_blueprints
 from .core import db
+from helpers import register_form
+from admin import Admin
+# from form import UserModule
+
 
 # def generate_csrf_token():
 #     if '_csrf_token' not in session:
@@ -35,7 +38,7 @@ def create_app(package_name, package_path, settings_override=None,
     """
     app = Flask(package_name, instance_relative_config=True)
 
-    app.config.from_object('punch.setting')
+    app.config.from_object('punch.config')
     app.config.from_object(settings_override)
 #     app.jinja_env.globals['csrf_token'] = generate_csrf_token  
 
@@ -43,12 +46,18 @@ def create_app(package_name, package_path, settings_override=None,
 #     
 #     db.create_all()
     db.init_app(app)
+    
+    
+    
     with app.app_context():
+        register_form(app,package_name,package_path)
+#         admin = Admin(app, title="my business")
+# 
+#         user_module = admin.register_module(UserModule, '/users', 'users',
+#                     'users')
         db.create_all()
 
-    register_blueprints(app, package_name, package_path)
-
-    app.wsgi_app = HTTPMethodOverrideMiddleware(app.wsgi_app)
+    
 
     return app
 

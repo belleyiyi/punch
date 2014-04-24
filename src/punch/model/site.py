@@ -6,10 +6,8 @@ Created on Feb 20, 2014
 '''
 
 from ..core import db
-# from district import District
 
 class Site(db.Model):
-    __tablename__ = 'site'
 
     id = db.Column(db.Integer(), primary_key=True)
     address = db.Column(db.String(256))

@@ -3,8 +3,9 @@ Created on Feb 20, 2014
 
 @author: baobao
 '''
-from punch import frontend
+from punch import create_app
+
 
 if __name__ == '__main__':
-    app = frontend.create_app()
+    app = create_app()
     app.run(debug=True)
