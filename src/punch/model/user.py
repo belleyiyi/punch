@@ -20,6 +20,7 @@ class User(db.Model):
     email = db.Column(db.String(50))
     address = db.Column(db.String(256))
     password = db.Column(db.String(255))
+    is_volunteer = db.Column(db.Boolean(),default=0)
     district_id = db.Column(db.Integer, db.ForeignKey('district.id'))
     district = db.relationship('District',
                            backref=db.backref('user', lazy='dynamic'))

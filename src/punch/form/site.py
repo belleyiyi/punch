@@ -12,4 +12,4 @@ class SiteModule(ModelAdminModule):
     name = 'SiteModule'
     model = Site
     db_session = db.session
-    form_class = model_form(Site, db.session)
+    form_class = model_form(Site, db.session,exclude=['event',])
